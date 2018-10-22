@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+            Multiple-Choice-Quiz-JavaScript
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+</head>
+<body>
+    <h3> Code Explained (YouTube Channel) Multiple-Choice-Quiz-JavaScript </h3>
+
+<div id="container">
+
+    <div id="start">START QUIZ! </div>
+    
+    <div id="quiz" style="display: none;">
+
+        <div id="qImage"></div>
+        <div id="question"><p>Question</p></div>
+
+        <div id="timer">
+            <div id="counter">6</div>
+            <div id="btimeGauge"></div>
+            <div id="timeGauge"></div>
+        </div>
+
+        <div id="choices">
+            <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
+            <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
+            <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
+        </div>
+
+        <div id="progress"> <!-- <div class="prog"></div> -->  </div>
+
+    </div>
+
+    <div id="scoreContainer" sytle="display: none;"></div>
+</div>
+
+<script src="quiz.js"></script>
+</body>
+</html>
