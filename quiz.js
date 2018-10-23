@@ -77,22 +77,31 @@ function startQuiz() {
     start.style.display = "none";
     renderQuestions();
     quiz.style.display = "block";
-    renderProgress();
-    renderCounter();
-    TIMER = setTimeout(renderCounter, 1000);
-    /* 
-    quiz.style.display = "block";
-    renderProgress();
-    renderCounter();
-    TIMER = setInterval(renderCounter, 1000); 
-    */
+    progressRender();
+    counterRender();
+    TIMER = setInterval(renderCounter, 1000);
 }
+
+/* 
+
+//RENDER QUESTIONS
+function renderQuestion() {
+
+    let q = questions[runningQuestion];
+    question.innerHTML = "<p>"+q.question + "</p>";
+    qImg.innerHTML = "<img src="+q.imgSrc+">";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+} 
+
+*/
 
 //RENDER QUESTIONS
 function renderQuestions() {
     let q = questions[runningQuestionIndex];
+    question.innerHTML = "<p>" + q.question + "</p>";
     qImg.innerHTML = "<img src="+q.imgSrc+">";
-    question.innerHTML = "<p>"+q.question+"</p>";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
@@ -109,14 +118,17 @@ function progressRender() {
 
 //SCORERENDER
 function scoreRender() {
+
     scoreCont.style.display = "block";
-    let scorePerCent = Math.round(100 * score/questions.length);
+    const scorePerCent = Math.round(100 * score/questions.length);
+
     let img = (scorePerCent >= 80) ? "img/5.png":
               (scorePerCent >= 60) ? "img/4.png":
               (scorePerCent >= 40) ? "img/3.png":
               (scorePerCent >= 20) ? "img/2.png": "img/1.png";
 
-    scoreCont.innerHTML = "<img src="+img+"><p>"+scorePerCent+"%</p>";
+    scoreCont.innerHTML = "<img src="+img+">";
+    scoreCont.innerHTML = "<p>"+scorePerCent+"%</p>";
 }
 
 
@@ -149,8 +161,8 @@ function checkAnswer(answer) {
     } else {
         answerIsWrong();
     }
+    count = 0;
     if(runningQuestionIndex < lastQuestionIndex){
-        count = 0;
         runningQuestionIndex++;
         renderQuestions();
     } else { 
